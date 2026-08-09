@@ -1,7 +1,303 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sophie Nguyễn — Projects</title>
+<meta name="description" content="Portfolio of Nguyễn Thu Thuỷ (Sophie) — data engineering, ML systems, and Vietnam-first products.">
+<style>
+:root{
+  --bg:#0b0e14; --bg2:#11151f; --card:#151a26; --card-hover:#1a2130;
+  --border:#232a3a; --text:#e6e9f0; --muted:#8b93a7; --dim:#5c657a;
+  --accent:#6ea8fe; --accent2:#a78bfa; --green:#4ade80; --gold:#fbbf24;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* hero */
+header{padding:64px 0 32px;background:linear-gradient(180deg,var(--bg2) 0%,var(--bg) 100%);border-bottom:1px solid var(--border)}
+.hero{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+.hero img{width:96px;height:96px;border-radius:50%;border:2px solid var(--border)}
+.hero h1{font-size:1.9rem;letter-spacing:-.02em}
+.hero .bio{color:var(--muted);max-width:620px;margin-top:6px}
+.links{margin-top:12px;display:flex;gap:14px;flex-wrap:wrap;font-size:.9rem}
+.links a{color:var(--accent);border:1px solid var(--border);padding:5px 12px;border-radius:999px;transition:.15s}
+.links a:hover{background:var(--card);border-color:var(--accent)}
+.stats{display:flex;gap:36px;margin-top:28px;flex-wrap:wrap}
+.stat b{font-size:1.5rem;display:block;color:var(--text)}
+.stat span{color:var(--dim);font-size:.82rem;text-transform:uppercase;letter-spacing:.06em}
+
+/* toolbar */
+.toolbar{position:sticky;top:0;z-index:10;background:rgba(11,14,20,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:12px 0}
+.toolbar .wrap{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+#search{flex:1;min-width:220px;background:var(--card);border:1px solid var(--border);color:var(--text);padding:9px 14px;border-radius:8px;font-size:.92rem;outline:none}
+#search:focus{border-color:var(--accent)}
+select{background:var(--card);border:1px solid var(--border);color:var(--text);padding:9px 10px;border-radius:8px;font-size:.88rem}
+.navchips{display:flex;gap:8px;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none}
+.navchips::-webkit-scrollbar{display:none}
+.chip{white-space:nowrap;font-size:.82rem;color:var(--muted);border:1px solid var(--border);padding:4px 12px;border-radius:999px;cursor:pointer;transition:.15s}
+.chip:hover{color:var(--text);border-color:var(--accent)}
+
+/* sections */
+main{padding:36px 0 80px}
+section{margin-bottom:44px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;border-bottom:1px solid var(--border);padding-bottom:10px}
+.sec-head h2{font-size:1.25rem;letter-spacing:-.01em}
+.sec-head .count{color:var(--dim);font-size:.85rem}
+.sec-head .blurb{color:var(--muted);font-size:.85rem;margin-left:auto;text-align:right}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+
+/* cards */
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:8px;transition:.15s;position:relative}
+.card:hover{background:var(--card-hover);border-color:#31405c;transform:translateY(-2px)}
+.card .name{font-weight:600;color:var(--accent);font-size:.98rem;word-break:break-word}
+.card .desc{color:var(--muted);font-size:.86rem;flex:1}
+.card .meta{display:flex;gap:14px;align-items:center;font-size:.78rem;color:var(--dim);margin-top:4px;flex-wrap:wrap}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:5px;vertical-align:-1px}
+.badge-new{position:absolute;top:12px;right:12px;background:var(--green);color:#052e13;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:999px;letter-spacing:.04em}
+.star{color:var(--gold)}
+
+/* langbar */
+.langbar{display:flex;height:10px;border-radius:999px;overflow:hidden;margin-top:22px;border:1px solid var(--border)}
+.langlegend{display:flex;gap:16px;margin-top:10px;flex-wrap:wrap;font-size:.78rem;color:var(--muted)}
+
+#status{color:var(--dim);font-size:.85rem;padding:40px 0;text-align:center}
+footer{border-top:1px solid var(--border);padding:28px 0;color:var(--dim);font-size:.8rem;text-align:center}
+footer a{color:var(--muted)}
+@media(max-width:640px){.hero h1{font-size:1.5rem}.stats{gap:22px}.sec-head .blurb{display:none}}
+</style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+
+<header>
+  <div class="wrap">
+    <div class="hero">
+      <img id="avatar" src="https://avatars.githubusercontent.com/u/82785782?v=4" alt="avatar">
+      <div>
+        <h1 id="name">Nguyễn Thu Thuỷ (Sophie)</h1>
+        <p class="bio" id="bio">Data engineering &amp; ML systems — query optimizers, streaming, lakehouses. Building VN-first data tools.</p>
+        <div class="links">
+          <a href="https://github.com/sophie-nguyenthuthuy" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://pypi.org/user/sophie.nguyenthuthuy/" target="_blank" rel="noopener">PyPI</a>
+          <a href="mailto:sophie.nguyenthuthuy@gmail.com">Email</a>
+        </div>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="st-repos">–</b><span>Public repos</span></div>
+      <div class="stat"><b id="st-stars">–</b><span>Stars</span></div>
+      <div class="stat"><b id="st-langs">–</b><span>Languages</span></div>
+      <div class="stat"><b id="st-new">–</b><span>New this month</span></div>
+    </div>
+    <div class="langbar" id="langbar" hidden></div>
+    <div class="langlegend" id="langlegend"></div>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="wrap">
+    <input id="search" type="search" placeholder="Search repos… (name, description, language)">
+    <select id="langfilter"><option value="">All languages</option></select>
+    <select id="sort">
+      <option value="updated">Recently updated</option>
+      <option value="created">Newest</option>
+      <option value="stars">Most stars</option>
+      <option value="name">A → Z</option>
+    </select>
+  </div>
+  <div class="wrap"><div class="navchips" id="navchips"></div></div>
+</div>
+
+<main class="wrap">
+  <div id="status">Loading repositories from GitHub…</div>
+  <div id="sections"></div>
+</main>
+
+<footer>
+  <div class="wrap">
+    Auto-generated from the <a href="https://api.github.com/users/sophie-nguyenthuthuy/repos" target="_blank" rel="noopener">GitHub API</a> on every visit —
+    new repositories appear here automatically. <span id="fetched-at"></span>
+  </div>
+</footer>
+
+<script>
+const USER = "sophie-nguyenthuthuy";
+const CACHE_KEY = "gh-repos-" + USER;
+const CACHE_TTL = 30 * 60 * 1000; // 30 min
+const NEW_DAYS = 30;
+
+// Ordered categorization rules — first match wins. Tested on name + description + topics.
+const CATEGORIES = [
+  { id:"research", title:"🧠 ML Reliability & Research",
+    blurb:"Lyapunov stability for retraining loops, model collapse, molecular ML",
+    re:/\b(lyap|lyapunov|model-collapse|retraining|chemstab|molprop|mol-screen)\b|lyapunov/i },
+  { id:"devtools", title:"🛠 Developer Tools",
+    blurb:"Testing, debugging, code intelligence, sandboxes",
+    re:/\b(flakeradar|testselect|callscape|phudu|actdbg|errdex|jsonarena|chipid|portover|agentbox|pytest|debugger|call-graph|sandbox(es)?)\b/i },
+  { id:"learning", title:"📚 Courses & Learning",
+    blurb:"Data engineering curriculum & teaching material",
+    re:/zero.?to.?hero|kh[oó]a h[oọ]c|course|study plan|interview|100\+? (data )?(engineering )?projects|practical-data-engineering|^data-engineering$|flashpal|studybloom|hidden-algorithms/i },
+  { id:"vietnam", title:"🇻🇳 Vietnam-First Products",
+    blurb:"Regulation-grounded SaaS & data products for the Vietnamese market",
+    re:/\b(vn|viet(nam(ese)?)?|phong.?thuy|tcvn|sbv|gso|ocop|yensao|xeoi|simdep|tang.?le|pet-farewell|mam-co|pickleball|hui|hkd|hokhau|homestay|htx|gia-pha|dongy|dangkiem|com-ban-tru|cung-gio|khoidoanh|livestream-commerce|sodo|sovereign-cloud|unified-shipping|ve-so|tietkiem|vnd|vngpu|preschool|garment|eudr|aquaculture|einvoice|talentnode|bonded-care|aec|atlas|inflation|savings-rate|wealth-os|folkright|urban-tree)\b/i },
+  { id:"llmops", title:"🤖 LLM & Agent Engineering",
+    blurb:"Evals, observability, guardrails, routing, inference at scale",
+    re:/\b(llm|rag|agent|mlops|prompt|ollama|inference|voice|whisper|tts|scholiast|cost-latency|slo-router|awesome-selfhosted-ai|k8s-ai|judge-audit)\b/i },
+  { id:"distsys", title:"🌐 Distributed Systems",
+    blurb:"Consensus, CRDTs, clocks, sagas, chaos testing",
+    re:/\b(raft|paxos|crdt|consensus|vector.?clock|hlc|hybrid.?logical|saga|jepsen|chandy|multi-region|multi-tenant|quorum|linearizab)\b/i },
+  { id:"quality", title:"✅ Data Quality & Governance",
+    blurb:"Contracts, catalogs, lineage, privacy, encryption",
+    re:/\b(data.?quality|dq|data.?contract|catalog|lineage|privacy|encryption|schema.?registry|pii|great.?expectations|soda)\b/i },
+  { id:"streaming", title:"🌊 Streaming & Pipelines",
+    blurb:"Kafka, Flink-style processing, ETL, orchestration",
+    re:/\b(stream|kafka|flink|spark|watermark|backpressure|exactly.?once|etl|pipeline|airflow|prefect|dagster|cdc|replay|reverse.?etl|autoscaler|finnhub|bitcoin|feature.?store|reconciliation|systemic-risk|quant|lambda|kappa)\b/i },
+  { id:"database", title:"🗄 Databases & Query Engines",
+    blurb:"Query optimizers, LSM trees, lakehouses, columnar engines",
+    re:/\b(query|lsm|learned.?index|optimizer|columnar|compression|materialized|join|warehouse|lakehouse|medallion|iceberg|arrow|duckdb|cow-mor|ivm|wcoj|volcano|cardinality|triejoin)\b/i },
+];
+const OTHER = { id:"other", title:"📦 Everything Else", blurb:"" };
+const HIDE = new Set([USER, USER + ".github.io"]); // profile + pages meta-repos
+
+const LANG_COLORS = {Python:"#3572A5",Go:"#00ADD8",TypeScript:"#3178c6",JavaScript:"#f1e05a",HTML:"#e34c26",CSS:"#563d7c","C++":"#f34b7d",Rust:"#dea584",Shell:"#89e051",Kotlin:"#A97BFF",Jupyter_Notebook:"#DA5B0B","Jupyter Notebook":"#DA5B0B",Dockerfile:"#384d54"};
+
+let ALL = [];
+
+function categorize(r){
+  const hay = [r.name, r.description || "", (r.topics || []).join(" ")].join(" ");
+  for (const c of CATEGORIES) if (c.re.test(hay)) return c.id;
+  return "other";
+}
+
+async function fetchRepos(){
+  const cached = localStorage.getItem(CACHE_KEY);
+  if (cached){
+    try{
+      const {t, repos} = JSON.parse(cached);
+      if (Date.now() - t < CACHE_TTL) return {repos, when:new Date(t)};
+    }catch(e){}
+  }
+  const repos = [];
+  for (let page = 1; page <= 5; page++){
+    const res = await fetch(`https://api.github.com/users/${USER}/repos?per_page=100&page=${page}&sort=updated`,
+      {headers:{Accept:"application/vnd.github+json"}});
+    if (!res.ok) throw new Error("GitHub API " + res.status);
+    const batch = await res.json();
+    repos.push(...batch);
+    if (batch.length < 100) break;
+  }
+  const slim = repos.map(r => ({
+    name:r.name, description:r.description, html_url:r.html_url, language:r.language,
+    stargazers_count:r.stargazers_count, fork:r.fork, topics:r.topics || [],
+    created_at:r.created_at, pushed_at:r.pushed_at, updated_at:r.updated_at, archived:r.archived
+  }));
+  try{ localStorage.setItem(CACHE_KEY, JSON.stringify({t:Date.now(), repos:slim})); }catch(e){}
+  return {repos:slim, when:new Date()};
+}
+
+function isNew(r){ return (Date.now() - new Date(r.created_at)) / 864e5 < NEW_DAYS; }
+function fmtDate(s){ return new Date(s).toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}); }
+function esc(s){ const d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+
+function render(){
+  const q = document.getElementById("search").value.trim().toLowerCase();
+  const lang = document.getElementById("langfilter").value;
+  const sort = document.getElementById("sort").value;
+
+  let repos = ALL.filter(r => !HIDE.has(r.name) && !r.fork);
+  if (lang) repos = repos.filter(r => r.language === lang);
+  if (q) repos = repos.filter(r =>
+    (r.name + " " + (r.description||"") + " " + (r.language||"") + " " + r.topics.join(" ")).toLowerCase().includes(q));
+
+  const sorters = {
+    updated:(a,b) => new Date(b.pushed_at) - new Date(a.pushed_at),
+    created:(a,b) => new Date(b.created_at) - new Date(a.created_at),
+    stars:(a,b) => b.stargazers_count - a.stargazers_count,
+    name:(a,b) => a.name.localeCompare(b.name),
+  };
+  repos.sort(sorters[sort]);
+
+  const groups = new Map();
+  for (const r of repos){
+    const c = categorize(r);
+    if (!groups.has(c)) groups.set(c, []);
+    groups.get(c).push(r);
+  }
+
+  const order = [...CATEGORIES, OTHER];
+  const secs = document.getElementById("sections");
+  secs.innerHTML = order.filter(c => groups.has(c.id)).map(c => {
+    const list = groups.get(c.id);
+    return `<section id="${c.id}">
+      <div class="sec-head">
+        <h2>${c.title}</h2><span class="count">${list.length}</span>
+        ${c.blurb ? `<span class="blurb">${c.blurb}</span>` : ""}
+      </div>
+      <div class="grid">${list.map(card).join("")}</div>
+    </section>`;
+  }).join("") || `<div id="status">No repositories match.</div>`;
+
+  document.getElementById("navchips").innerHTML =
+    order.filter(c => groups.has(c.id))
+      .map(c => `<a class="chip" href="#${c.id}">${c.title} · ${groups.get(c.id).length}</a>`).join("");
+}
+
+function card(r){
+  const color = LANG_COLORS[r.language] || "#6b7280";
+  return `<a class="card" href="${r.html_url}" target="_blank" rel="noopener">
+    ${isNew(r) ? `<span class="badge-new">NEW</span>` : ""}
+    <div class="name">${esc(r.name)}</div>
+    <div class="desc">${esc(r.description || "")}</div>
+    <div class="meta">
+      ${r.language ? `<span><span class="dot" style="background:${color}"></span>${esc(r.language)}</span>` : ""}
+      ${r.stargazers_count ? `<span class="star">★ ${r.stargazers_count}</span>` : ""}
+      <span>updated ${fmtDate(r.pushed_at)}</span>
+    </div>
+  </a>`;
+}
+
+function renderHeader(repos){
+  const own = repos.filter(r => !HIDE.has(r.name) && !r.fork);
+  document.getElementById("st-repos").textContent = own.length;
+  document.getElementById("st-stars").textContent = own.reduce((s,r) => s + r.stargazers_count, 0);
+  document.getElementById("st-new").textContent = own.filter(isNew).length;
+
+  const langCount = {};
+  for (const r of own) if (r.language) langCount[r.language] = (langCount[r.language]||0) + 1;
+  const langs = Object.entries(langCount).sort((a,b) => b[1] - a[1]);
+  document.getElementById("st-langs").textContent = langs.length;
+
+  const total = langs.reduce((s,[,n]) => s + n, 0);
+  const bar = document.getElementById("langbar");
+  bar.hidden = false;
+  bar.innerHTML = langs.map(([l,n]) =>
+    `<div title="${l}: ${n}" style="width:${(n/total*100).toFixed(1)}%;background:${LANG_COLORS[l]||"#6b7280"}"></div>`).join("");
+  document.getElementById("langlegend").innerHTML = langs.slice(0,7).map(([l,n]) =>
+    `<span><span class="dot" style="background:${LANG_COLORS[l]||"#6b7280"}"></span>${l} · ${n}</span>`).join("");
+
+  const sel = document.getElementById("langfilter");
+  sel.innerHTML = `<option value="">All languages</option>` +
+    langs.map(([l,n]) => `<option value="${l}">${l} (${n})</option>`).join("");
+}
+
+(async function init(){
+  try{
+    const {repos, when} = await fetchRepos();
+    ALL = repos;
+    document.getElementById("status").remove();
+    renderHeader(repos);
+    render();
+    document.getElementById("fetched-at").textContent = "Data fetched " + when.toLocaleString("en-GB");
+  }catch(err){
+    document.getElementById("status").textContent =
+      "Could not load repositories (" + err.message + "). GitHub API rate limit is 60 req/hr — try again shortly.";
+  }
+  for (const id of ["search","langfilter","sort"])
+    document.getElementById(id).addEventListener("input", render);
+})();
+</script>
 </body>
 </html>
